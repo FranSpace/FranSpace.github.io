@@ -1,6 +1,6 @@
 export const siteData = {
   profile: {
-    name: "Frano",
+    name: "Frank",
     badge: "FranSpace",
     aboutLabel: "About",
     eyebrow: "Research / Engineering / Notes",
