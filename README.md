@@ -1,80 +1,61 @@
-# Personal Site Starter (React + Vite + GitHub Pages)
+# Personal Site Starter
 
-## 1. 本地运行
+## Local preview
 
 ```bash
-npm install
 npm run dev
 ```
 
-浏览器打开终端里显示的本地地址，例如：
+Open the local address shown in the terminal, usually:
 
 ```text
 http://localhost:5173/
 ```
 
-## 2. 生产构建
+## Production preview
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 3. 改内容
+## Content maintenance
 
-主要改这两个文件：
+General site copy and page data still live in:
 
-- `src/siteData.js`：改文字和卡片数据
-- `src/styles.css`：改颜色、字体、圆角、hover 动效
+- `src/siteData.js`
+- `src/styles.css`
 
-## 4. 部署到 GitHub Pages
+LaTeX-driven notes now use a separate content layer:
 
-### 推荐仓库名
+- `content/latex-notes/<slug>/meta.json`
+- `content/latex-notes/<slug>/content.md`
 
-```text
-你的用户名.github.io
-```
+The site auto-loads every note under `content/latex-notes`.
 
-如果你使用这个仓库名，`vite.config.js` 里的：
+## LaTeX to Markdown workflow
 
-```js
-base: '/'
-```
+This repo now includes a project skill for note conversion:
 
-保持不变即可。
+- `.codex/skills/latex-notes-to-md/SKILL.md`
 
-### 如果你使用普通仓库名
+Recommended long-term workflow:
 
-例如：
+1. Keep LaTeX as the source of truth.
+2. Use the skill to convert one note into repo-ready Markdown.
+3. Save the result into `content/latex-notes/<slug>/`.
+4. Run `npm run build` to verify the note renders correctly.
 
-```text
-my-site
-```
+## GitHub Pages
 
-则需要把 `vite.config.js` 改成：
+If the repository name is `<username>.github.io`, keep:
 
 ```js
-base: '/my-site/'
+base: "/"
 ```
 
-## 5. 推送到 GitHub
+If the repository name is a normal repository such as `my-site`, update `vite.config.js`:
 
-```bash
-git init
-git add .
-git commit -m "init personal site"
-git branch -M main
-git remote add origin https://github.com/你的用户名/你的仓库名.git
-git push -u origin main
+```js
+base: "/my-site/"
 ```
-
-## 6. 打开 Pages
-
-进入 GitHub 仓库：
-
-- Settings
-- Pages
-- Build and deployment
-- Source 选择 **GitHub Actions**
-
-项目已经自带 `.github/workflows/deploy.yml`，推送后会自动部署。

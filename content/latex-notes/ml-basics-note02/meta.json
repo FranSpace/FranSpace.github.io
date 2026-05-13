@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note02",
+  "title": "epoch、batch 与 iteration",
+  "desc": "Three basic units inside the training loop.",
+  "descZh": "训练循环中的三个基本单位。",
+  "meta": "Machine Learning and PINN Notes · Note 02",
+  "icon": "02",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "神经网络不是一次性学完全部内容，而是在很多轮训练中不断更新参数。理解 epoch、batch 和 iteration 的区别，是理解后续优化器、学习率和训练日志的前提。",
+  "pdfHref": "/generated-notes/ml-basics-note02/source.pdf",
+  "order": 2
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note07",
+  "title": "激活函数",
+  "desc": "From nonlinear mapping to activation choices in PINN.",
+  "descZh": "从非线性映射到 PINN 中的激活函数选择。",
+  "meta": "Machine Learning and PINN Notes · Note 07",
+  "icon": "07",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "激活函数的意义不只是让网络“更复杂”，而是为网络引入非线性、影响梯度传播，并在 PINN 中进一步影响高阶导数的平滑性和数值稳定性。",
+  "pdfHref": "/generated-notes/ml-basics-note07/source.pdf",
+  "order": 7
+}

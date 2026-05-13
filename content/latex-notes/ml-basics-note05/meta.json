@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note05",
+  "title": "参数与超参数",
+  "desc": "What the model learns and what we configure.",
+  "descZh": "哪些是模型自己学的，哪些是人为设定的。",
+  "meta": "Machine Learning and PINN Notes · Note 05",
+  "icon": "05",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "训练神经网络时，并不是所有“可调的量”都属于同一种角色。参数和超参数的区别，决定了我们应该把问题归因到模型学习、优化机制还是人为配置。",
+  "pdfHref": "/generated-notes/ml-basics-note05/source.pdf",
+  "order": 5
+}

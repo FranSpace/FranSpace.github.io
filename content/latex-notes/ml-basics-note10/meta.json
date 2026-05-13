@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note10",
+  "title": "反向传播",
+  "desc": "How neural networks compute parameter gradients.",
+  "descZh": "神经网络如何计算参数梯度。",
+  "meta": "Machine Learning and PINN Notes · Note 10",
+  "icon": "10",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "反向传播负责高效计算损失函数对所有可训练参数的梯度。它本身不更新参数，但它给出的梯度决定了优化器之后如何行动，是理解神经网络训练机制的关键一步。",
+  "pdfHref": "/generated-notes/ml-basics-note10/source.pdf",
+  "order": 10
+}

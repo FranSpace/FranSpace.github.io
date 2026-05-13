@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note00",
+  "title": "知识体系总览",
+  "desc": "A roadmap from machine learning basics to PINN study.",
+  "descZh": "从入门机器学习到物理信息神经网络的学习路线导航。",
+  "meta": "Machine Learning and PINN Notes · Note 00",
+  "icon": "00",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "这篇索引笔记先不给出局部技巧，而是把整套 Machine Learning 到 PINN 的学习路径组织成一张总览图，帮助后续每一篇 Note 都能放回到整体知识结构中理解。",
+  "pdfHref": "/generated-notes/ml-basics-note00/source.pdf",
+  "order": 0
+}

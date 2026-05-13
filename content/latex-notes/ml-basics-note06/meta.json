@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note06",
+  "title": "神经元与多层感知机",
+  "desc": "From biological neurons to the basic MLP structure.",
+  "descZh": "从大脑神经元到神经网络的基本结构。",
+  "meta": "Machine Learning and PINN Notes · Note 06",
+  "icon": "06",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "神经网络的直觉起点不是复杂公式，而是信息如何被接收、加权、整合并输出。理解人工神经元和多层感知机，是后续理解激活函数、前向传播与 PINN 网络结构的前提。",
+  "pdfHref": "/generated-notes/ml-basics-note06/source.pdf",
+  "order": 6
+}

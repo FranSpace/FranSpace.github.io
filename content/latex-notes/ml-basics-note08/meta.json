@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note08",
+  "title": "前向传播",
+  "desc": "How neural networks produce outputs from inputs.",
+  "descZh": "理解神经网络如何从输入生成输出。",
+  "meta": "Machine Learning and PINN Notes · Note 08",
+  "icon": "08",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "前向传播是神经网络从输入到输出的核心计算过程。它不只是“把数据送进网络”这么简单，而是后续损失构造、反向传播和 PINN 残差计算的基础。",
+  "pdfHref": "/generated-notes/ml-basics-note08/source.pdf",
+  "order": 8
+}

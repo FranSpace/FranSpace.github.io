@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note01",
+  "title": "机器学习在学什么？",
+  "desc": "From function approximation to physics-informed learning.",
+  "descZh": "从函数拟合到物理约束学习。",
+  "meta": "Machine Learning and PINN Notes · Note 01",
+  "icon": "01",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "机器学习的核心不是“让计算机变聪明”，而是学习输入和输出之间的映射关系。对 PINN 来说，这个映射不仅要贴合数据，还要满足控制方程、边界条件和其他物理约束。",
+  "pdfHref": "/generated-notes/ml-basics-note01/source.pdf",
+  "order": 1
+}

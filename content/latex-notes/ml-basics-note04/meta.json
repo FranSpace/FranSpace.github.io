@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note04",
+  "title": "欠拟合、过拟合与泛化",
+  "desc": "Whether the model has really learned the rule.",
+  "descZh": "模型到底有没有真正学会。",
+  "meta": "Machine Learning and PINN Notes · Note 04",
+  "icon": "04",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "loss 下降并不自动意味着模型学对了。欠拟合、过拟合和泛化能力，是判断模型学习质量时必须区分的三个核心概念；放到 PINN 里，它们还会以更隐蔽的方式出现。",
+  "pdfHref": "/generated-notes/ml-basics-note04/source.pdf",
+  "order": 4
+}

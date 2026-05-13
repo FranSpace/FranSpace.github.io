@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note03",
+  "title": "训练集、验证集与测试集",
+  "desc": "Why model quality cannot be judged from training error alone.",
+  "descZh": "为什么不能只看训练误差。",
+  "meta": "Machine Learning and PINN Notes · Note 03",
+  "icon": "03",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "机器学习真正关心的不是模型在训练数据上表现得多好，而是它在没见过的数据上是否仍然可靠。这篇笔记把训练集、验证集、测试集，以及 PINN 中的采样点角色统一放到同一个框架里说明。",
+  "pdfHref": "/generated-notes/ml-basics-note03/source.pdf",
+  "order": 3
+}
