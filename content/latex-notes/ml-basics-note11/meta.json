@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note11",
+  "title": "梯度下降",
+  "desc": "Why moving along the negative gradient reduces the loss.",
+  "descZh": "为什么沿负梯度方向可以让损失下降。",
+  "meta": "Machine Learning and PINN Notes · Note 11",
+  "icon": "11",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "梯度下降是最基础也最重要的优化思想之一。它把反向传播得到的梯度真正转化为参数更新规则：梯度给出局部上升最快的方向，而负梯度方向通常对应局部下降最快的方向。理解梯度下降，是理解 SGD、Momentum、Adam、L-BFGS 以及 PINN 训练策略的基础。",
+  "pdfHref": "/generated-notes/ml-basics-note11/source.pdf",
+  "order": 11
+}

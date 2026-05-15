@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note12",
+  "title": "学习率",
+  "desc": "The key hyperparameter that controls the update step size.",
+  "descZh": "控制参数更新步长的关键超参数。",
+  "meta": "Machine Learning and PINN Notes · Note 12",
+  "icon": "12",
+  "accent": "blue",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "学习率（Learning Rate, LR）控制每一次参数更新的步长。它过小会让训练几乎停滞，过大又会导致 loss 震荡甚至发散。对普通神经网络来说，它决定收敛速度和稳定性；对 PINN 来说，它还会影响 PDE 残差、边界条件和数据项之间的训练平衡。",
+  "pdfHref": "/generated-notes/ml-basics-note12/source.pdf",
+  "order": 12
+}
