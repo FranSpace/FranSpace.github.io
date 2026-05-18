@@ -1,0 +1,16 @@
+{
+  "slug": "ml-basics-note13",
+  "title": "优化器的作用",
+  "desc": "How optimizers turn gradients into concrete parameter updates.",
+  "descZh": "反向传播算出梯度后，优化器如何真正更新参数。",
+  "meta": "Machine Learning and PINN Notes · Note 13",
+  "icon": "13",
+  "accent": "sage",
+  "featuredOnHome": false,
+  "series": "Machine Learning and PINN Notes",
+  "semester": "2026 Spring",
+  "author": "Frano",
+  "summary": "优化器是神经网络训练中负责更新模型参数的算法。反向传播给出损失函数对参数的梯度，但梯度本身并不等于最终更新量；优化器会结合当前梯度、历史梯度、梯度平方乃至曲率信息，决定每个参数究竟如何移动。理解优化器的分类和使用场景，是理解 SGD、Momentum、Adam、L-BFGS 以及 PINN 中 Adam + L-BFGS 两阶段训练策略的基础。",
+  "pdfHref": "/generated-notes/ml-basics-note13/source.pdf",
+  "order": 13
+}
