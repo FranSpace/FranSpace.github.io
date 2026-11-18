@@ -1,3 +1,5 @@
+import quadFocusGuide from "../content/projects/quadfocus.md?raw";
+
 export const siteData = {
   seo: {
     siteTitle: "FranSpace | Personal Archive",
@@ -98,7 +100,7 @@ export const siteData = {
     },
     {
       label: "Projects",
-      value: "04",
+      value: "05",
       note: "active & archived",
       to: "/projects",
     },
@@ -351,6 +353,7 @@ export const siteData = {
       index: "01",
       title: "Material Model Library",
       stack: "C++ / Qt / Eigen",
+      desc: "Constitutive models, strain conversions, and numerical solvers for computational mechanics.",
       descZh: "持续扩展的本构模型、应变转换与数值求解工具实现集合。",
       status: "Active",
       statusTone: "blue",
@@ -368,6 +371,7 @@ export const siteData = {
       index: "02",
       title: "Verification Sandbox",
       stack: "C++ / Testing",
+      desc: "A test environment for checking strain conversions, stress calculations, and solver behavior.",
       descZh: "用于应变转换、应力输出与数值行为检查的小型测试与验证环境。",
       status: "Prototype",
       statusTone: "sage",
@@ -413,6 +417,25 @@ export const siteData = {
         paragraphs: [
           "It is intended as a stable local platform for running small calculations, checks, and interface experiments.",
           "The project values speed of iteration and local convenience over product-level polish.",
+        ],
+      },
+    },
+    {
+      slug: "quadfocus",
+      index: "05",
+      title: "QuadFocus",
+      stack: "Windows / WebView2",
+      desc: "A four-quadrant task board for Windows. Press Win+L to leave a progress note before locking your PC.",
+      status: "Released",
+      statusTone: "sage",
+      content: {
+        lang: "zh-CN",
+        summary:
+          "我为 Windows 设计了这块四象限任务板，用它整理并行项目，在锁屏前记下每项工作做到哪一步。",
+        markdown: quadFocusGuide,
+        links: [
+          { label: "View on GitHub", href: "https://github.com/FranSpace/QuadFocus" },
+          { label: "Download for Windows", href: "https://github.com/FranSpace/QuadFocus/releases" },
         ],
       },
     },

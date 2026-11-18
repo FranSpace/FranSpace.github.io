@@ -138,6 +138,10 @@ a {
   padding: 22px 0;
 }
 
+.site-header--inner .site-header__inner {
+  padding-block: 10px;
+}
+
 .brand {
   justify-self: start;
   display: inline-flex;
@@ -233,7 +237,7 @@ a {
   border-radius: 999px;
   padding: 13px 22px;
   cursor: pointer;
-  transition: all 220ms ease;
+  transition: color 220ms ease, background-color 220ms ease;
   font-size: 0.98rem;
 }
 
@@ -301,7 +305,10 @@ a {
 }
 
 .page-shell--wide {
+  --card-gap: clamp(10px, 1vw, 12px);
+  --heading-list-gap: 14px;
   width: min(1720px, calc(100% - 72px));
+  padding-top: clamp(10px, 1.25vw, 16px);
 }
 
 .hero,
@@ -409,12 +416,11 @@ a {
 
 .metrics-grid {
   display: grid;
-  gap: 18px;
+  gap: var(--card-gap, 18px);
 }
 
 .metrics-grid--hero {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
   width: min(100%, 520px);
 }
 
@@ -475,7 +481,11 @@ a {
 }
 
 .section-block--topless {
-  padding-top: 28px;
+  padding-top: var(--card-gap, 28px);
+}
+
+.page-shell--wide .section-block + .section-block {
+  padding-top: 32px;
 }
 
 .section-block--last {
@@ -508,12 +518,17 @@ a {
 
 .page-hero {
   grid-template-columns: minmax(0, 1.6fr) auto;
+  gap: 8px 12px;
   border-bottom: 1px solid var(--line);
-  padding-bottom: 34px;
+  padding: 4px 0 12px;
+}
+
+.page-hero .section-eyebrow {
+  margin-bottom: 8px;
 }
 
 .page-hero__desc {
-  margin: 18px 0 0;
+  margin: 10px 0 0;
   max-width: 980px;
   color: var(--text-soft);
   line-height: 1.85;
@@ -522,8 +537,15 @@ a {
 
 .card-grid {
   display: grid;
-  gap: 22px;
-  margin-top: 30px;
+  gap: var(--card-gap, 22px);
+}
+
+.section-heading + .card-grid {
+  margin-top: var(--heading-list-gap, 30px);
+}
+
+.page-shell--wide .card-grid > .soft-card-link {
+  display: grid;
 }
 
 .card-grid--3 {
@@ -715,8 +737,7 @@ a {
 
 .journal-list {
   display: grid;
-  gap: 18px;
-  margin-top: 30px;
+  gap: var(--card-gap);
 }
 
 .journal-card {
@@ -913,7 +934,7 @@ a {
 .about-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 32px;
+  gap: 18px;
   align-items: start;
 }
 
@@ -944,8 +965,8 @@ a {
 .about-principles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 30px;
+  gap: var(--card-gap);
+  margin-top: var(--heading-list-gap);
 }
 
 .about-principle {
@@ -1248,6 +1269,61 @@ a {
     padding-right: 22px;
   }
 }
+
+@media (max-width: 980px) {
+  .site-header--inner .site-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand about" "nav nav";
+    gap: 6px 12px;
+  }
+
+  .site-header--inner .brand {
+    grid-area: brand;
+    gap: 8px;
+  }
+
+  .site-header--inner .brand__mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .site-header--inner .brand__badge {
+    margin-bottom: 2px;
+    font-size: 0.6rem;
+  }
+
+  .site-header--inner .brand__name {
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .site-header--inner .about-link {
+    grid-area: about;
+    padding: 6px 10px;
+  }
+
+  .site-header--inner .top-nav {
+    grid-area: nav;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    padding: 3px;
+    gap: 2px;
+    border-radius: 20px;
+  }
+
+  .site-header--inner .top-nav__item {
+    min-height: 36px;
+    padding-inline: 4px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-header--inner .top-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .soft-card-link,
 .journal-card-link {
   display: block;
@@ -1321,20 +1397,24 @@ a {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 28px 0 64px;
+  padding: 0 0 64px;
 }
 
 .detail-page__masthead {
   display: grid;
-  gap: 22px;
+  gap: 4px;
 }
 
 .detail-page__back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
   justify-self: start;
   color: var(--blue-deep);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
 }
 
 .detail-page__reading-rail {
@@ -1342,26 +1422,21 @@ a {
   margin: 0;
 }
 
-.detail-page__reading-rail--title {
-  width: min(100%, var(--detail-rail-width));
-}
-
 .detail-page__title {
-  margin: 8px 0 0;
-  font-family: "Cormorant Garamond", serif;
-  max-width: none;
-  width: 100%;
-  font-size: clamp(3.8rem, 5.8vw, 6rem);
-  line-height: 0.82;
-  letter-spacing: -0.04em;
-  text-wrap: balance;
+  margin: 0;
+  font-family: "Cormorant Garamond", "Songti SC", SimSun, serif;
+  font-size: clamp(1.65rem, 1.4rem + 1.35vw, 2.65rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .detail-page__actions {
-  margin-top: 18px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 8px 14px;
   flex-wrap: wrap;
   width: 100%;
   max-width: none;
@@ -1372,7 +1447,7 @@ a {
   background: rgba(255, 255, 255, 0.78);
   color: var(--text);
   border-radius: 999px;
-  padding: 12px 18px;
+  padding: 7px 14px;
   cursor: pointer;
   transition:
     transform 200ms ease,
@@ -1403,7 +1478,7 @@ a {
 }
 
 .detail-page__summary {
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   max-width: none;
   color: var(--text-soft);
   font-size: 1.1rem;
@@ -1418,7 +1493,7 @@ a {
 }
 
 .detail-page__body {
-  margin-top: 36px;
+  margin-top: 18px;
   max-width: none;
 }
 
@@ -1428,16 +1503,85 @@ a {
   color: var(--text-soft);
 }
 
+.project-readme {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.project-readme .detail-page__summary {
+  line-height: 1.65;
+}
+
+.project-readme .markdown-paragraph {
+  color: var(--text);
+}
+
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  margin-top: 10px;
+}
+
+.detail-links a {
+  color: var(--blue-deep);
+  text-underline-offset: 0.25em;
+}
+
+.project-readme .markdown-heading {
+  margin: 1.4em 0 0.55em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.project-readme .markdown-heading:first-child {
+  margin-top: 0;
+}
+
+.project-readme .markdown-list {
+  padding-inline-start: 1.6em;
+  line-height: 1.85;
+}
+
+.project-readme .markdown-list li + li {
+  margin-top: 0.4em;
+}
+
+.markdown-figure {
+  margin: 20px 0 28px;
+}
+
+.markdown-figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.markdown-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+}
+
+.markdown-figure figcaption {
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
 .note-directory {
-  margin-top: 42px;
-  padding-top: 28px;
+  margin-top: 24px;
+  padding-top: 12px;
   border-top: 1px solid var(--line);
 }
 
 .note-directory__list {
   display: grid;
-  gap: 16px;
-  margin-top: 24px;
+  gap: var(--card-gap);
+  margin-top: var(--heading-list-gap);
 }
 
 .note-directory__item {

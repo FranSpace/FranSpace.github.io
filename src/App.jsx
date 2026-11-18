@@ -173,7 +173,9 @@ function Header({ profile, nav }) {
   }, [location.pathname, nav]);
 
   return (
-    <header className="site-header">
+    <header
+      className={location.pathname === "/" ? "site-header" : "site-header site-header--inner"}
+    >
       <div className="site-header__inner">
         <Link className="brand" to="/">
           <div className="brand__mark">
@@ -450,7 +452,6 @@ function ProjectsPage({ data }) {
                 <div className="stack-label">{card.stack}</div>
                 <h3 className="card-title card-title--large">{card.title}</h3>
                 <p className="card-desc">{card.desc}</p>
-                <p className="card-desc card-desc--zh">{card.descZh}</p>
                 <div className="card-link">View project ↗</div>
               </article>
             </Link>
@@ -569,8 +570,7 @@ function NoteEntryDetailPage({ data }) {
     <DetailPage
       item={entry}
       backTo={`/notes/${collection.slug}`}
-      backLabel={`Back to ${collection.title}`}
-      eyebrowLabel={collection.title}
+      backLabel="Back to series contents"
     />
   );
 }
@@ -589,6 +589,7 @@ function ProjectDetailPage({ data }) {
   return (
     <DetailPage
       item={findBySlug(data.projects)}
+      className="project-readme"
       backTo="/projects"
       backLabel="Back to Projects"
     />
@@ -620,34 +621,20 @@ function findBySlug(items) {
   return items.find((item) => item.slug === slug);
 }
 
-function DetailPage({
-  item,
-  backTo,
-  backLabel,
-  featureToggle,
-  eyebrowLabel = "Detail page",
-}) {
+function DetailPage({ item, backTo, backLabel, featureToggle, className = "" }) {
   if (!item) return <Navigate to={backTo} replace />;
   const hasActions = Boolean(
     featureToggle || item.content?.pdfHref || item.entries?.length,
   );
 
   return (
-    <section className="detail-page">
-      <header className="detail-page__masthead">
+    <section className={`detail-page ${className}`.trimEnd()}>
+      <header className="detail-page__reading-rail detail-page__masthead">
         <Link to={backTo} className="detail-page__back">
-          ← {backLabel}
+          <span aria-hidden="true">←</span> {backLabel}
         </Link>
-
-        <div className="section-eyebrow">
-          <span>{eyebrowLabel}</span>
-          <span className="section-eyebrow__line" />
-        </div>
-      </header>
-
-      <div className="detail-page__reading-rail detail-page__reading-rail--title">
         <h1 className="detail-page__title">{item.title}</h1>
-      </div>
+      </header>
 
         {hasActions && (
           <div className="detail-page__reading-rail">
@@ -682,14 +669,24 @@ function DetailPage({
 
       {item.content?.summary && (
         <div className="detail-page__reading-rail">
-          <p className="detail-page__summary">{item.content.summary}</p>
+          <p className="detail-page__summary" lang={item.content.lang}>{item.content.summary}</p>
         </div>
       )}
       {item.descZh && (
         <div className="detail-page__reading-rail">
-          <p className="detail-page__summary detail-page__summary--zh">
+          <p className="detail-page__summary detail-page__summary--zh" lang="zh-CN">
             {item.descZh}
           </p>
+        </div>
+      )}
+
+      {item.content?.links?.length > 0 && (
+        <div className="detail-links">
+          {item.content.links.map(({ label, href }) => (
+            <a key={href} href={href} target="_blank" rel="noreferrer">
+              {label} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
         </div>
       )}
 
@@ -705,7 +702,7 @@ function DetailPage({
           <NoteDirectory collection={item} />
         </>
       ) : item.content?.markdown ? (
-        <div className="detail-page__reading-rail">
+        <div className="detail-page__reading-rail" lang={item.content.lang}>
           <MarkdownContent markdown={item.content.markdown} />
         </div>
       ) : (
@@ -801,9 +798,9 @@ function NoteDirectory({ collection }) {
               <div className="note-directory__content">
                 <div className="note-directory__meta">{entry.meta}</div>
               <h3 className="note-directory__title">{entry.title}</h3>
-              {entry.descZh && (
+              {(entry.descZh || entry.desc) && (
                   <p className="note-directory__desc note-directory__desc--zh">
-                    {entry.descZh}
+                    {entry.descZh || entry.desc}
                   </p>
                 )}
                 <div className="card-link note-directory__card-link">Open note →</div>
@@ -840,6 +837,16 @@ function MarkdownContent({ markdown }) {
   return (
     <div className="detail-page__body detail-page__body--markdown">
       {blocks.map((block, index) => {
+        if (block.type === "image") {
+          return (
+            <figure className="markdown-figure" key={index}>
+              <a href={block.src} target="_blank" rel="noreferrer" aria-label={`查看原图：${block.alt}`}>
+                <img src={block.src} alt={block.alt} loading="lazy" />
+              </a>
+              {block.caption && <figcaption>{block.caption}</figcaption>}
+            </figure>
+          );
+        }
         if (block.type === "heading") {
           if (block.depth === 2) {
             return (
@@ -1256,14 +1263,14 @@ function resolveRouteMeta(pathname, data) {
         if (entry) {
           return {
             title: `${entry.title} | ${siteTitle}`,
-            description: entry.desc || currentRoute.description,
+            description: entry.descZh || entry.desc || currentRoute.description,
           };
         }
       }
 
       return {
         title: `${detail.title} | ${siteTitle}`,
-        description: detail.desc || currentRoute.description,
+        description: detail.descZh || detail.desc || currentRoute.description,
       };
     }
   }
@@ -1313,6 +1320,8 @@ function buildNoteCollections(collections, entries) {
   });
 }
 
+const markdownImage = /^!\[([^\]]*)\]\((\/[^\s)]+)(?:\s+"([^"]*)")?\)$/;
+
 function parseMarkdown(markdown) {
   const lines = markdown.split(/\r?\n/);
   const blocks = [];
@@ -1323,6 +1332,14 @@ function parseMarkdown(markdown) {
     const trimmed = line.trim();
 
     if (!trimmed) {
+      index += 1;
+      continue;
+    }
+
+    const image = trimmed.match(markdownImage);
+    if (image) {
+      const [, alt, src, caption] = image;
+      blocks.push({ type: "image", alt, src, caption });
       index += 1;
       continue;
     }
@@ -1393,6 +1410,7 @@ function parseMarkdown(markdown) {
       const current = lines[index].trim();
       if (
         !current ||
+        markdownImage.test(current) ||
         current === "$$" ||
         current.startsWith("## ") ||
         current.startsWith("### ") ||

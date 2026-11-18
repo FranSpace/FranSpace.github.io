@@ -60,6 +60,10 @@ These do not participate in the current site build:
 
 ## Content maintenance
 
+Projects 列表的标题、卡片简介、状态和导航使用英文。详情页的具体内容优先用中文，按主题和读者需要也可以用英文。
+
+项目卡片在 `src/siteData.js` 中维护。需要分节的项目介绍可以像 `content/projects/quadfocus.md` 一样单独写成 Markdown，再由项目条目引用。
+
 General site copy and page data live in:
 
 - `src/siteData.js`
